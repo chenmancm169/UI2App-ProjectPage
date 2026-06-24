@@ -1,0 +1,185 @@
+/* ============================================================
+   UI2App project page — custom styles on top of the Nerfies/Bulma template
+   ============================================================ */
+
+body {
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1f2227;
+}
+
+/* ---- hero / title block (Nerfies conventions) ---- */
+.publication-title {
+  font-family: 'Castoro', 'Noto Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+.publication-subtitle {
+  font-family: 'Castoro', 'Noto Serif', Georgia, serif;
+  color: #3a3d44;
+}
+.author-block { display: inline-block; margin: 0 0.35rem; }
+.eql-cntrb { font-size: 0.85rem; color: #6b7280; }
+.publication-links { margin-top: 1.1rem; }
+.publication-links .link-block { display: inline-block; margin: 0.25rem 0.25rem; }
+.external-link.button { background: #363636; }
+
+/* one-line headline stat under the buttons */
+.headline-stat {
+  margin: 1.6rem auto 0;
+  max-width: 720px;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid #d9dcef;
+  border-radius: 9px;
+  background: #f3f5fd;
+  color: #2b3358;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.headline-stat strong { color: #b0344d; }
+
+/* ---- generic section accents ---- */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #4a5bb0;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.section { padding-top: 2.6rem; padding-bottom: 2.6rem; }
+.figure-caption { font-size: 0.9rem; color: #6b7280; margin-top: 0.6rem; }
+
+/* ---- metric cards ---- */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+}
+.metric-card {
+  border: 1px solid #e6e7ea;
+  border-radius: 13px;
+  padding: 1.1rem 1.2rem;
+  background: #fff;
+  transition: box-shadow .16s, transform .16s, border-color .16s;
+}
+.metric-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(20,22,30,.07); }
+.metric-card.is-ours { background: #f7f9ff; border-color: #c9d4f3; }
+.metric-card .m-name { font-weight: 800; font-size: 1.05rem; color: #2c3e86; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.metric-card .m-tag { font-size: 0.82rem; color: #8a8f98; margin-left: .5rem; }
+.metric-card.is-ours .m-tag { color: #4a5bb0; font-weight: 700; }
+.metric-card p { font-size: 0.92rem; line-height: 1.55; color: #4b4f57; margin-top: .5rem; }
+
+/* ---- compressed IIS taxonomy strip ---- */
+.tax-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.tax-col { border: 1px solid #e6e7ea; border-radius: 11px; overflow: hidden; background: #fff; }
+.tax-col .tax-head {
+  padding: 0.55rem 0.85rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85rem; font-weight: 700;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.tax-col.s1 .tax-head { background: #f1f3f7; color: #3a3d44; }
+.tax-col.s2 .tax-head { background: #eef2fb; color: #2c4a86; }
+.tax-col.s3 .tax-head { background: #e5ecfb; color: #243f74; }
+.tax-col .tax-body { padding: 0.6rem 0.85rem; font-size: 0.88rem; line-height: 1.7; color: #4b4f57; }
+.tax-col .tax-weight { font-weight: 400; opacity: .7; }
+
+/* ---- dataset diversity grid ---- */
+.dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+.dataset-grid figure { margin: 0; }
+.dataset-grid img {
+  width: 100%; height: 150px; object-fit: cover; object-position: top;
+  border: 1px solid #e6e7ea; border-radius: 9px; display: block;
+}
+.dataset-grid figcaption { font-size: 0.8rem; color: #6b7280; margin-top: 0.3rem; text-align: center; }
+
+/* ---- leaderboard ---- */
+.lb-toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; }
+.lb-tabs .button { margin: 0 0.15rem 0.15rem 0; }
+.lb-callout {
+  border-left: 4px solid #4a5bb0;
+  background: #f5f7fd;
+  padding: 0.7rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem; color: #2b3358;
+  margin-bottom: 1rem;
+}
+.lb-callout strong { color: #b0344d; }
+.lb-wrap { overflow-x: auto; border: 1px solid #e6e7ea; border-radius: 12px; }
+table.leaderboard { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 560px; }
+table.leaderboard thead th {
+  background: #fafafa; border-bottom: 2px solid #e6e7ea;
+  padding: 0.7rem 0.8rem; font-size: 0.8rem; color: #5b6068;
+  text-align: right; white-space: nowrap; cursor: pointer; user-select: none;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+table.leaderboard thead th.col-rank, table.leaderboard thead th.col-model { text-align: left; cursor: default; }
+table.leaderboard thead th.sortcol { color: #4a5bb0; }
+table.leaderboard thead th.iiscol { color: #2c3e86; }
+table.leaderboard tbody td { padding: 0.7rem 0.8rem; text-align: right; border-bottom: 1px solid #f1f1f3; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9rem; }
+table.leaderboard tbody td.td-rank { color: #9aa0a8; }
+table.leaderboard tbody td.td-model { text-align: left; font-family: 'Noto Sans', sans-serif; font-weight: 600; color: #23262b; white-space: nowrap; }
+table.leaderboard tbody td.td-model .org { color: #9aa0a8; font-weight: 400; font-size: 0.8rem; margin-left: 0.4rem; }
+table.leaderboard tbody tr.top td { background: #fbfcff; }
+td.cell-best  { background: #e6efe7 !important; color: #2f5d2a; font-weight: 700; }
+td.cell-worst { background: #f4e7e5 !important; color: #9a3d2f; }
+td.cell-iis { font-weight: 700; color: #2c3e86; }
+.lb-note { font-size: 0.82rem; color: #9aa0a8; margin-top: 0.6rem; }
+.lb-legend { font-size: 0.85rem; color: #6b7280; margin-top: 0.4rem; }
+.lb-legend .pill { padding: 0 0.4rem; border-radius: 5px; font-weight: 600; }
+.lb-legend .pill.best { background: #e6efe7; color: #2f5d2a; }
+.lb-legend .pill.worst { background: #f4e7e5; color: #9a3d2f; }
+
+/* ---- IIS heatmap deep dive ---- */
+.heatmap-callout {
+  background: #fff8f6; border: 1px solid #f0d8d2; border-radius: 10px;
+  padding: 0.9rem 1.1rem; font-size: 0.97rem; color: #6b3a30; line-height: 1.55;
+}
+.heatmap-callout strong { color: #b0344d; }
+
+/* ---- qualitative gallery (juxtapose) ---- */
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+.gallery-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.badge.warn { background: #fdf0d8; color: #8a5a00; }
+.case-card { border: 1px solid #e6e7ea; border-radius: 13px; overflow: hidden; background: #fff; }
+.case-card .case-head { padding: 0.7rem 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; border-bottom: 1px solid #f1f1f3; }
+.case-card .case-model { font-weight: 700; color: #23262b; }
+.badge { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.12rem 0.45rem; border-radius: 5px; }
+.badge.ok { background: #e7efe1; color: #2f5d2a; }
+.badge.bad { background: #f7e7e3; color: #9a3d2f; }
+.case-card .jx-holder { line-height: 0; }
+.case-card .case-video { width: 100%; display: block; aspect-ratio: 16 / 10; object-fit: cover; background: #0e1014; }
+.case-card .case-foot { padding: 0.7rem 1rem; font-size: 0.88rem; color: #4b4f57; line-height: 1.5; }
+.case-card .case-foot code { font-size: 0.82rem; }
+
+/* ---- positioning matrix ---- */
+.matrix-wrap { overflow-x: auto; border: 1px solid #e6e7ea; border-radius: 12px; }
+table.matrix { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+table.matrix th, table.matrix td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f1f1f3; text-align: center; }
+table.matrix thead th { background: #fafafa; font-size: 0.8rem; color: #5b6068; border-bottom: 2px solid #e6e7ea; }
+table.matrix td.lbl, table.matrix th.lbl { text-align: left; white-space: nowrap; }
+table.matrix tr.ours td { background: #f7f9ff; font-weight: 700; }
+.ck { color: #2e8b57; font-weight: 700; }
+.cx { color: #c0392b; font-weight: 700; }
+.cdash { color: #b7bcc4; }
+
+/* ---- bibtex ---- */
+#bibtex pre { background: #1f1e1b; color: #d6d2c6; border-radius: 12px; padding: 1.1rem 1.2rem; overflow-x: auto; font-size: 0.86rem; line-height: 1.65; }
+.bibtex-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+
+/* ---- footer ---- */
+.footer { background: #fafafa; }
+
+/* ---- responsive ---- */
+@media screen and (max-width: 768px) {
+  .metric-grid, .tax-strip, .dataset-grid, .gallery-grid, .gallery-grid-3 { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation</title>
+  <meta name="description"
+    content="UI2App is a benchmark for interaction inference: can vision-language models recover application behavior from screenshots alone? 327 state-coherent screenshots, multi-route runnable web apps, 6 frontier VLMs.">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UI2App: Benchmarking Visual Interaction Inference">
+  <meta property="og:description"
+    content="Can VLMs recover application behavior from screenshots alone? A benchmark over 327 screenshots and multi-route runnable web apps.">
+  <meta property="og:url" content="https://chenmancm169.github.io/UI2App-ProjectPage/">
+  <meta property="og:image"
+    content="https://chenmancm169.github.io/UI2App-ProjectPage/static/images/teaser.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234a5bb0'/%3E%3Crect x='7' y='8' width='8' height='7' rx='1.5' fill='white'/%3E%3Crect x='17' y='8' width='8' height='7' rx='1.5' fill='%23c6cee6'/%3E%3Crect x='7' y='17' width='18' height='7' rx='1.5' fill='%23c6cee6'/%3E%3C/svg%3E">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- icons (CDN, degrade gracefully offline) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+
+  <!-- vendored libraries -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">UI2App</h1>
+            <h2 class="subtitle is-4 publication-subtitle">Benchmarking Visual Interaction Inference in Executable Web
+              Application Generation</h2>
+
+            <div class="is-size-5 publication-authors" style="margin-top:1.1rem;">
+              <span class="author-block">First Author<sup>1</sup><sup>*</sup>,</span>
+              <span class="author-block">Second Author<sup>1</sup>,</span>
+              <span class="author-block">Third Author<sup>1</sup></span>
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top:0.4rem; color:#6b7280;">
+              <span class="author-block"><sup>1</sup>Affiliation / Institution</span>
+            </div>
+            <div class="eql-cntrb" style="margin-top:0.3rem;"><sup>*</sup>Equal contribution</div>
+
+            <!-- link buttons -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span><span>Data</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ABSTRACT ============================ -->
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Image-driven web generation takes UI screenshots as input and aligns closely with real development
+              workflows, yet current benchmarks focus primarily on <em>visual fidelity</em> and lack a systematic
+              evaluation of the <em>interaction capabilities</em> of generated artifacts. We introduce
+              <strong>UI2App</strong>,
+              a web-generation benchmark targeting <strong>interaction inference</strong>: the ability to recover
+              application behavior from screenshots alone, without any textual or behavioral guidance.
+            </p>
+            <p>
+              UI2App comprises <strong>327 state-coherent screenshots</strong> spanning 45 runnable, multi-route
+              applications, curated from <strong>2,013 candidate repositories</strong> through automated
+              filtering and
+              three-level expert review. An end-to-end pipeline scores each artifact along four dimensions:
+              <strong>executability</strong>, <strong>navigation reachability</strong>, <strong>visual
+                fidelity</strong>,
+              and <strong>interaction inference (IIS)</strong>, its distinguishing axis. IIS checks whether the
+              interactions implied by the screenshots are <em>actually implemented and functional</em>, weighted by
+              state-management complexity.
+            </p>
+            <p>
+              Experiments on six frontier vision-language models reveal a marked capability mismatch between visual
+              reconstruction and interaction realization: the visual-fidelity leader scores only <strong>7.5</strong> on
+              IIS, ranking fourth and lagging the IIS leader by <strong>5.2×</strong>. High-complexity interactions such
+              as cross-page state remain a pervasive bottleneck. Half of the evaluated models score <em>exactly
+                zero</em>
+              on this dimension.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ QUALITATIVE GALLERY ============================ -->
+  <section class="section" id="gallery" style="background:#fbfbfc;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">See it run</h2>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:880px;">
+        Live recordings of the models' <em>actual generated apps</em> from the benchmark screenshots. First <strong>the
+          gap</strong> (look-alike models diverge sharply),
+        then <strong>the breadth</strong> (the range of interactions models infer from static screenshots).
+      </p>
+
+      <h3 class="title is-4 is-spaced" style="margin:1.6rem 0 0.5rem;">The gap — visual fidelity ≠ interaction
+        inference</h3>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:860px; margin-bottom:0.8rem;">
+        Two apps, three models each. Most reconstruct the screenshot closely, yet each app sorts the models into
+        <strong>distinct tiers of interaction inference</strong>: full logic, input-only, and pixels-only.
+      </p>
+      <h4 class="title is-5" style="margin:0.4rem 0 0.7rem; color:#3a3d44;">SHOP.CO storefront — filters &amp; cart</h4>
+      <div class="gallery-grid-3">
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span>
+          </div>
+          <video class="case-video" src="static/videos/shopco48_claude.mp4"
+            poster="static/videos/shopco48_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Price slider, search, category and sort all <strong>re-filter the grid</strong>; Add to
+            cart populates <code>/cart</code> with the item + header badge. Fully wired.</div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">GPT-5.4</span><span class="badge warn">PARTIAL ⚠</span></div>
+          <video class="case-video" src="static/videos/shopco48_gpt.mp4" poster="static/videos/shopco48_gpt_poster.jpg"
+            autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Filters inert. The cart badge bumps to <code>1</code> but the cart page still reads
+            "empty". The handler-to-store wiring is severed (dead code).</div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Gemini 3.1 Pro Preview</span><span class="badge bad">FROZEN
+              ✗</span></div>
+          <video class="case-video" src="static/videos/shopco48_gemini.mp4"
+            poster="static/videos/shopco48_gemini_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">The <em>visual-fidelity leader</em>. Every filter is rendered but inert, and Add to
+            cart is a no-op, so <code>/cart</code> stays empty.</div>
+        </div>
+      </div>
+
+      <h4 class="title is-5" style="margin:2rem 0 0.5rem; color:#3a3d44;">Duolingo-style lesson — answer &amp; check
+      </h4>
+      <div class="gallery-grid-3">
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span>
+          </div>
+          <video class="case-video" src="static/videos/duolingo_claude.mp4"
+            poster="static/videos/duolingo_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot"><strong>Full logic.</strong> The choice highlights, Check <strong>validates</strong>
+            the answer, "🎉 Correct!" appears, and Continue advances to the next question (+XP).</div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Gemini 3.1 Pro Preview</span><span class="badge warn">PARTIAL
+              ⚠</span></div>
+          <video class="case-video" src="static/videos/duolingo_gemini.mp4"
+            poster="static/videos/duolingo_gemini_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot"><strong>Input only.</strong> The choice highlights and Check even turns green, so it
+            <em>looks</em> ready. But <code>Check</code> has no handler, so it never judges the answer.
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">GLM-4.6V</span><span class="badge bad">FROZEN
+              ✗</span></div>
+          <video class="case-video" src="static/videos/duolingo_glm.mp4" poster="static/videos/duolingo_glm_poster.jpg"
+            autoplay muted loop playsinline controls></video>
+          <div class="case-foot"><strong>Pixels only.</strong> Clicking a choice does nothing; the card has no
+            handler at all, and Check is dead. The layout was reconstructed; no interaction was inferred.
+          </div>
+        </div>
+      </div>
+
+      <h3 class="title is-4 is-spaced" style="margin:2.6rem 0 0.5rem;">The breadth — what the models build</h3>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
+        Recovered purely from <strong>static screenshots</strong>, with no behavioral hints, models infer a whole
+        spectrum
+        of working interactions: an interactive map, detail drawers, modal forms, data-swapping charts, and even a
+        Web-Audio synth.
+      </p>
+      <div class="gallery-grid">
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">interactive map · drawer · form</span></div>
+          <video class="case-video" src="static/videos/finefoods_claude.mp4"
+            poster="static/videos/finefoods_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">A food-delivery admin recovered from one screenshot. The <strong>Delivery Map</strong>
+            is a genuine pan- &amp; zoom-able OpenStreetMap; the sidebar collapses, a customer's <strong>detail
+              drawer</strong> reveals nested orders, then the Add-product form types live.
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">auth · modal CRUD</span></div>
+          <video class="case-video" src="static/videos/crud_daisyui_claude.mp4"
+            poster="static/videos/crud_daisyui_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Log in → open the "Add New" dialog → submit → the new lead row appears in the table.
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">data viz</span></div>
+          <video class="case-video" src="static/videos/dashboard_antd_claude.mp4"
+            poster="static/videos/dashboard_antd_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Ant Design Pro dashboard: the Sales / Visits tab <strong>swaps the chart's underlying
+              data</strong>, not just the highlight.</div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Kimi K2.5 Thinking</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">open model · latent affordance</span></div>
+          <video class="case-video" src="static/videos/genshin_kimi.mp4" poster="static/videos/genshin_kimi_poster.jpg"
+            autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Infers an in-browser synthesizer: Record + playing the note pads triggers a real
+            <strong>Web-Audio</strong> chain, an affordance never stated in the screenshots.
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">multi-page · filter + favorites</span></div>
+          <video class="case-video" src="static/videos/nexus_intranet_claude.mp4"
+            poster="static/videos/nexus_intranet_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">Enterprise intranet: search + department-filter the employee directory, then ♥
+            resources
+            and toggle "Favorites" to filter the list. Real state across many pages.</div>
+        </div>
+        <div class="case-card">
+          <div class="case-head"><span class="case-model">Claude Sonnet 4.6</span><span class="badge ok">DYNAMIC
+              ✓</span><span class="tag is-light" style="margin-left:auto;">data grid · search + filter</span></div>
+          <video class="case-video" src="static/videos/crm_shadcn_claude.mp4"
+            poster="static/videos/crm_shadcn_claude_poster.jpg" autoplay muted loop playsinline controls></video>
+          <div class="case-foot">CRM customers table: typing in search and the status filter both genuinely re-filter
+            the
+            rows (10 → 3 → 1; Active / Pending / All).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DATASET ============================ -->
+  <section class="section" id="dataset" style="background:#fbfbfc;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Curated for interaction difficulty</h2>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
+        We searched <strong>2,013</strong> GitHub repositories and kept the <strong>45</strong> that survive a
+        three-level expert rubric (~8% pass), selecting for <strong>layout diversity</strong>, <strong>interaction
+          richness</strong>, <strong>multi-route complexity</strong>, and <strong>design-language variety</strong>
+        rather
+        than corpus size, with no placeholder pages or duplicated templates. The result: <strong>327</strong>
+        state-coherent screenshots (4–14 per app) across four user-facing categories.
+      </p>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div><span class="m-name">Content</span><span class="m-tag">36%</span></div>
+          <p>Portfolio · Blog · Documentation · SaaS landing</p>
+        </div>
+        <div class="metric-card">
+          <div><span class="m-name">Admin</span><span class="m-tag">36%</span></div>
+          <p>shadcn / Ant / MUI / Tailwind / Mantine admin panels · CRM · food-ops back-office</p>
+        </div>
+        <div class="metric-card">
+          <div><span class="m-name">Transaction</span><span class="m-tag">13%</span></div>
+          <p>E-commerce · Crypto exchange · NFT marketplace · Booking</p>
+        </div>
+        <div class="metric-card">
+          <div><span class="m-name">Specialty</span><span class="m-tag">16%</span></div>
+          <p>Analytics dashboard · Music player · Todo · Learning · Intranet</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ METRICS ============================ -->
+  <section class="section" id="metrics">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Four metrics, one gate</h2>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
+        Every generated app is scored on four axes. <strong>Executability is the entry gate</strong>; the other three
+        are evaluated per route. <strong>IIS</strong> is the benchmark's distinguishing axis.
+      </p>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div><span class="m-name">EXEC@1 / @3</span><span class="m-tag">build &amp; run</span></div>
+          <p><em>Does it run?</em> A production build must compile and the home route must render real content.
+            <strong>@1</strong> is one-shot; <strong>@3</strong> allows up to three rounds of error-feedback repair.
+          </p>
+        </div>
+        <div class="metric-card">
+          <div><span class="m-name">NRS</span><span class="m-tag">navigation reachability</span></div>
+          <p><em>Can you get there?</em> The fraction of screenshot routes a user can actually reach by clicking the
+            app's own navigation (human-verified).</p>
+        </div>
+        <div class="metric-card">
+          <div><span class="m-name">VFS</span><span class="m-tag">visual fidelity</span></div>
+          <p><em>Does it look right?</em> Judge-free block matching scores <strong>Size, Text, Position, Color</strong>
+            of the rendered content against the screenshot.</p>
+        </div>
+        <div class="metric-card is-ours">
+          <div><span class="m-name">IIS</span><span class="m-tag">interaction inference · ours</span></div>
+          <p><em>Does the behavior work?</em> A rubric credits <strong>any valid implementation</strong> of each
+            interaction the screenshots imply, weighted by state complexity (S1 local → S2 shared → S3 cross-route).
+            Higher scopes must be inferred across several screenshots, not one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ LEADERBOARD ============================ -->
+  <section class="section" id="leaderboard" style="background:#fbfbfc;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Leaderboard</h2>
+
+      <p class="subtitle is-6" style="color:#6b7280; max-width:820px;">
+        Six frontier VLMs, scored end-to-end on the four metrics above. Click any column to sort, switch app category
+        with the tabs, or expand the VFS sub-metrics; rows are ranked by <strong>IIS</strong> by default.
+      </p>
+
+      <div class="lb-toolbar">
+        <div class="buttons has-addons lb-tabs" id="lbTabs">
+          <button class="button is-small is-link" data-cat="Overall">Overall</button>
+          <button class="button is-small is-light" data-cat="Content">Content</button>
+          <button class="button is-small is-light" data-cat="Admin">Admin</button>
+          <button class="button is-small is-light" data-cat="Transaction">Transaction</button>
+          <button class="button is-small is-light" data-cat="Specialty">Specialty</button>
+        </div>
+        <button class="button is-small is-outlined" id="btnBreakdown">Show VFS breakdown</button>
+      </div>
+
+      <div class="lb-wrap">
+        <table class="leaderboard">
+          <thead>
+            <tr id="lbHead">
+              <th class="col-rank">#</th>
+              <th class="col-model">Model</th>
+              <!-- metric headers injected by JS -->
+            </tr>
+          </thead>
+          <tbody id="lbBody"><!-- rows injected by JS --></tbody>
+        </table>
+      </div>
+      <p class="lb-legend">
+        Click any metric header to sort. <span class="pill best">best</span> and <span class="pill worst">worst</span>
+        per column are shaded. EXEC = build-and-run · NRS = navigation reachability · VFS = visual fidelity · IIS =
+        interaction inference. All 0–100, higher is better.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ POSITIONING MATRIX ============================ -->
+  <section class="section" id="comparison">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">How UI2App differs from prior benchmarks</h2>
+      <p class="subtitle is-6" style="color:#6b7280; max-width:780px;">
+        Prior benchmarks either drop interaction entirely, or <em>specify</em> the target interaction (via text or
+        demonstration videos). UI2App is the first to require interaction to be <strong>inferred</strong> from
+        image-only, multi-page input.
+      </p>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="lbl">Benchmark</th>
+              <th class="lbl">Input</th>
+              <th class="lbl">Output</th>
+              <th>Image-only<br>input</th>
+              <th>Multi-page<br>app</th>
+              <th>Interaction<br>eval</th>
+              <th><em>Inferred</em><br>interaction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="lbl">WebGen-Bench</td>
+              <td class="lbl">Text</td>
+              <td class="lbl">Framework</td>
+              <td class="cx">✗</td>
+              <td class="ck">✓</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+            </tr>
+            <tr>
+              <td class="lbl">Design2Code</td>
+              <td class="lbl">Single image</td>
+              <td class="lbl">HTML</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+              <td class="cx">✗</td>
+              <td class="cdash">—</td>
+            </tr>
+            <tr>
+              <td class="lbl">Interaction2Code</td>
+              <td class="lbl">Paired images</td>
+              <td class="lbl">HTML</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+            </tr>
+            <tr>
+              <td class="lbl">MRWeb</td>
+              <td class="lbl">Image + Text</td>
+              <td class="lbl">HTML</td>
+              <td class="cx">✗</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+              <td class="cdash">—</td>
+            </tr>
+            <tr>
+              <td class="lbl">Vision2Web (L2)</td>
+              <td class="lbl">Images + Text</td>
+              <td class="lbl">Framework</td>
+              <td class="cx">✗</td>
+              <td class="ck">✓</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+            </tr>
+            <tr>
+              <td class="lbl">IWR-Bench</td>
+              <td class="lbl">Video</td>
+              <td class="lbl">HTML</td>
+              <td class="cx">✗</td>
+              <td class="cx">✗</td>
+              <td class="ck">✓</td>
+              <td class="cx">✗</td>
+            </tr>
+            <tr class="ours">
+              <td class="lbl">UI2App (ours)</td>
+              <td class="lbl">Images</td>
+              <td class="lbl">Framework</td>
+              <td class="ck">✓</td>
+              <td class="ck">✓</td>
+              <td class="ck">✓</td>
+              <td class="ck">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ BIBTEX ============================ -->
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop">
+      <div class="bibtex-head">
+        <h2 class="title is-3" style="margin:0;">BibTeX</h2>
+        <button class="button is-small is-dark" id="btnCopyBib">Copy</button>
+      </div>
+      <pre id="bibtexBlock">@article{ui2app2026,
+  title   = {UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation},
+  author  = {First Author and Second Author and Third Author},
+  journal = {Preprint},
+  year    = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container is-max-desktop has-text-centered">
+      <p style="font-family:'JetBrains Mono',monospace; font-weight:700; color:#4a5bb0;">UI2App</p>
+      <p class="is-size-7" style="color:#9aa0a8;">A benchmark for interaction inference from image-only, multi-page
+        screenshots.</p>
+      <p class="is-size-7" style="color:#b7bcc4;">
+        Preprint · 2026 · Page template adapted from <a href="https://nerfies.github.io/">Nerfies</a> (CC BY-SA 4.0).
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================ SCRIPTS ============================ -->
+  <script src="static/js/index.js"></script>
+</body>
+
+</html>
