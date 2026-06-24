@@ -14,8 +14,7 @@
   <meta property="og:description"
     content="Can VLMs recover application behavior from screenshots alone? A benchmark over 327 screenshots and multi-route runnable web apps.">
   <meta property="og:url" content="https://chenmancm169.github.io/UI2App-ProjectPage/">
-  <meta property="og:image"
-    content="https://chenmancm169.github.io/UI2App-ProjectPage/static/images/teaser.png">
+  <meta property="og:image" content="https://chenmancm169.github.io/UI2App-ProjectPage/static/images/teaser.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon"
@@ -95,31 +94,28 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Image-driven web generation takes UI screenshots as input and aligns closely with real development
-              workflows, yet current benchmarks focus primarily on <em>visual fidelity</em> and lack a systematic
-              evaluation of the <em>interaction capabilities</em> of generated artifacts. We introduce
-              <strong>UI2App</strong>,
-              a web-generation benchmark targeting <strong>interaction inference</strong>: the ability to recover
-              application behavior from screenshots alone, without any textual or behavioral guidance.
+              Large language models have grown competent at web-page generation, yet text-driven approaches rely on
+              intricate prompts that burden users and limit the expression of page layout and cross-page state.
+              Image-driven generation, which takes UI screenshots as input, aligns more closely with real development
+              workflows, yet existing benchmarks assess it primarily on <em>visual fidelity</em> and offer no systematic
+              evaluation of the generated artifacts' <em>interaction capabilities</em>. We introduce
+              <strong>UI2App</strong>, a web-generation benchmark targeting <strong>interaction inference</strong>: the
+              recovery of application behavior from screenshots alone, without any textual or behavioral guidance.
             </p>
             <p>
-              UI2App comprises <strong>327 state-coherent screenshots</strong> spanning 45 runnable, multi-route
-              applications, curated from <strong>2,013 candidate repositories</strong> through automated
-              filtering and
-              three-level expert review. An end-to-end pipeline scores each artifact along four dimensions:
-              <strong>executability</strong>, <strong>navigation reachability</strong>, <strong>visual
-                fidelity</strong>,
-              and <strong>interaction inference (IIS)</strong>, its distinguishing axis. IIS checks whether the
-              interactions implied by the screenshots are <em>actually implemented and functional</em>, weighted by
-              state-management complexity.
+              UI2App comprises <strong>327 state-coherent screenshots</strong> spanning <strong>45</strong> runnable,
+              multi-route applications. An end-to-end pipeline scores each artifact along four dimensions:
+              <strong>executability</strong>, <strong>navigation reachability</strong>, <strong>visual fidelity</strong>,
+              and <strong>interaction inference (IIS)</strong>. IIS assesses each inferred interaction by functional
+              correctness, weighted by state-management complexity.
             </p>
             <p>
-              Experiments on six frontier vision-language models reveal a marked capability mismatch between visual
-              reconstruction and interaction realization: the visual-fidelity leader scores only <strong>7.5</strong> on
-              IIS, ranking fourth and lagging the IIS leader by <strong>5.2×</strong>. High-complexity interactions such
-              as cross-page state remain a pervasive bottleneck. Half of the evaluated models score <em>exactly
-                zero</em>
-              on this dimension.
+              Across six frontier vision-language models, the results reveal a marked mismatch between visual
+              reconstruction and interaction realization: the visual-fidelity leader attains only <strong>7.5</strong>
+              IIS, ranking fourth and trailing the IIS leader by <strong>5.2×</strong>. High-complexity interactions such
+              as cross-page state remain a pervasive bottleneck, with <strong>half</strong> of the evaluated models
+              scoring <em>exactly zero</em>. Inferring complete interaction behavior from static screenshots thus
+              remains a key challenge for current models.
             </p>
           </div>
         </div>
@@ -132,16 +128,14 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">See it run</h2>
       <p class="subtitle is-6" style="color:#6b7280; max-width:880px;">
-        Live recordings of the models' <em>actual generated apps</em> from the benchmark screenshots. First <strong>the
-          gap</strong> (look-alike models diverge sharply),
-        then <strong>the breadth</strong> (the range of interactions models infer from static screenshots).
+        Live recordings of the models' <em>actual generated apps</em>, generated from the benchmark screenshots.
       </p>
 
       <h3 class="title is-4 is-spaced" style="margin:1.6rem 0 0.5rem;">The gap — visual fidelity ≠ interaction
         inference</h3>
       <p class="subtitle is-6" style="color:#6b7280; max-width:860px; margin-bottom:0.8rem;">
-        Two apps, three models each. Most reconstruct the screenshot closely, yet each app sorts the models into
-        <strong>distinct tiers of interaction inference</strong>: full logic, input-only, and pixels-only.
+        Two apps, three models each, sorted into three tiers: <strong>fully wired</strong>, <strong>partially
+        wired</strong>, and <strong>frozen</strong>.
       </p>
       <h4 class="title is-5" style="margin:0.4rem 0 0.7rem; color:#3a3d44;">SHOP.CO storefront — filters &amp; cart</h4>
       <div class="gallery-grid-3">
@@ -205,10 +199,8 @@
 
       <h3 class="title is-4 is-spaced" style="margin:2.6rem 0 0.5rem;">The breadth — what the models build</h3>
       <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
-        Recovered purely from <strong>static screenshots</strong>, with no behavioral hints, models infer a whole
-        spectrum
-        of working interactions: an interactive map, detail drawers, modal forms, data-swapping charts, and even a
-        Web-Audio synth.
+        Recovered from <strong>static screenshots</strong> alone: an interactive map, detail drawers, modal forms,
+        data-swapping charts, even a Web-Audio synth.
       </p>
       <div class="gallery-grid">
         <div class="case-card">
@@ -273,12 +265,9 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">Curated for interaction difficulty</h2>
       <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
-        We searched <strong>2,013</strong> GitHub repositories and kept the <strong>45</strong> that survive a
-        three-level expert rubric (~8% pass), selecting for <strong>layout diversity</strong>, <strong>interaction
-          richness</strong>, <strong>multi-route complexity</strong>, and <strong>design-language variety</strong>
-        rather
-        than corpus size, with no placeholder pages or duplicated templates. The result: <strong>327</strong>
-        state-coherent screenshots (4–14 per app) across four user-facing categories.
+        From <strong>2,013</strong> GitHub repos, <strong>45</strong> (~8%) clear a three-level expert rubric (layout
+        diversity, interaction richness, multi-route complexity), yielding <strong>327</strong> state-coherent
+        screenshots across four categories.
       </p>
       <div class="metric-grid">
         <div class="metric-card">
@@ -319,7 +308,7 @@
         <div class="metric-card">
           <div><span class="m-name">NRS</span><span class="m-tag">navigation reachability</span></div>
           <p><em>Can you get there?</em> The fraction of screenshot routes a user can actually reach by clicking the
-            app's own navigation (human-verified).</p>
+            app's own navigation.</p>
         </div>
         <div class="metric-card">
           <div><span class="m-name">VFS</span><span class="m-tag">visual fidelity</span></div>
@@ -329,8 +318,7 @@
         <div class="metric-card is-ours">
           <div><span class="m-name">IIS</span><span class="m-tag">interaction inference · ours</span></div>
           <p><em>Does the behavior work?</em> A rubric credits <strong>any valid implementation</strong> of each
-            interaction the screenshots imply, weighted by state complexity (S1 local → S2 shared → S3 cross-route).
-            Higher scopes must be inferred across several screenshots, not one.</p>
+            interaction the screenshots imply, weighted by state complexity (S1 local → S2 shared → S3 cross-route).</p>
         </div>
       </div>
     </div>
