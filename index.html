@@ -51,14 +51,19 @@
               Application Generation</h2>
 
             <div class="is-size-5 publication-authors" style="margin-top:1.1rem;">
-              <span class="author-block">First Author<sup>1</sup><sup>*</sup>,</span>
-              <span class="author-block">Second Author<sup>1</sup>,</span>
-              <span class="author-block">Third Author<sup>1</sup></span>
+              <span class="author-block">Grace Man Chen,</span>
+              <span class="author-block">Litao Guo,</span>
+              <span class="author-block">Yifan Wu,</span>
+              <span class="author-block">Yiyu Chen,</span>
+              <span class="author-block">Yenchi Tseng,</span>
+              <span class="author-block">Sicheng Liu,</span>
+              <span class="author-block">Yuyu Luo<sup>†</sup>,</span>
+              <span class="author-block">Ying-Cong Chen<sup>†</sup></span>
             </div>
             <div class="is-size-6 publication-authors" style="margin-top:0.4rem; color:#6b7280;">
-              <span class="author-block"><sup>1</sup>Affiliation / Institution</span>
+              <span class="author-block">The Hong Kong University of Science and Technology (Guangzhou)</span>
             </div>
-            <div class="eql-cntrb" style="margin-top:0.3rem;"><sup>*</sup>Equal contribution</div>
+            <div class="eql-cntrb" style="margin-top:0.3rem;"><sup>†</sup>Corresponding author</div>
 
             <!-- link buttons -->
             <div class="column has-text-centered">
@@ -69,12 +74,14 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://github.com/chenmancm169/UI2App" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://huggingface.co/datasets/UI2App/UI2App" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-database"></i></span><span>Data</span>
                   </a>
                 </span>
@@ -94,28 +101,22 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Large language models have grown competent at web-page generation, yet text-driven approaches rely on
-              intricate prompts that burden users and limit the expression of page layout and cross-page state.
-              Image-driven generation, which takes UI screenshots as input, aligns more closely with real development
-              workflows, yet existing benchmarks assess it primarily on <em>visual fidelity</em> and offer no systematic
-              evaluation of the generated artifacts' <em>interaction capabilities</em>. We introduce
-              <strong>UI2App</strong>, a web-generation benchmark targeting <strong>interaction inference</strong>: the
-              recovery of application behavior from screenshots alone, without any textual or behavioral guidance.
-            </p>
-            <p>
-              UI2App comprises <strong>327 state-coherent screenshots</strong> spanning <strong>45</strong> runnable,
-              multi-route applications. An end-to-end pipeline scores each artifact along four dimensions:
-              <strong>executability</strong>, <strong>navigation reachability</strong>, <strong>visual fidelity</strong>,
-              and <strong>interaction inference (IIS)</strong>. IIS assesses each inferred interaction by functional
-              correctness, weighted by state-management complexity.
-            </p>
-            <p>
-              Across six frontier vision-language models, the results reveal a marked mismatch between visual
-              reconstruction and interaction realization: the visual-fidelity leader attains only <strong>7.5</strong>
-              IIS, ranking fourth and trailing the IIS leader by <strong>5.2×</strong>. High-complexity interactions such
-              as cross-page state remain a pervasive bottleneck, with <strong>half</strong> of the evaluated models
-              scoring <em>exactly zero</em>. Inferring complete interaction behavior from static screenshots thus
-              remains a key challenge for current models.
+              Large language models (LLMs) are increasingly capable of generating web pages, but text-driven methods
+              require complex prompts and provide limited control over layout and cross-page consistency. Image-driven
+              approaches better reflect real workflows by using UI screenshots, yet existing benchmarks emphasize
+              <em>visual fidelity</em> and largely ignore <em>interaction quality</em>. We present
+              <strong>UI2App</strong>,
+              a benchmark for evaluating <strong>interaction inference</strong>: recovering application behavior from
+              screenshots without textual or behavioral guidance. UI2App contains <strong>327 state-coherent
+                screenshots</strong> covering <strong>45</strong> runnable multi-route web applications. We introduce an
+              end-to-end evaluation pipeline covering <strong>executability</strong>, <strong>navigation
+                reachability</strong>, <strong>visual fidelity</strong>, and <strong>interaction inference</strong>. The
+              interaction metric (<strong>IIS</strong>) measures functional correctness and state-management complexity
+              while rewarding any valid implementation. Experiments on six frontier vision-language models reveal a
+              major
+              gap between visual reconstruction and interaction realization: the visual-fidelity leader scores only
+              <strong>7.5</strong> on IIS, ranking <strong>fourth</strong> and trailing the IIS leader by
+              <strong>5.2×</strong>. Cross-page state handling remains a major bottleneck.
             </p>
           </div>
         </div>
@@ -127,15 +128,12 @@
   <section class="section" id="gallery" style="background:#fbfbfc;">
     <div class="container is-max-desktop">
       <h2 class="title is-3">See it run</h2>
-      <p class="subtitle is-6" style="color:#6b7280; max-width:880px;">
-        Live recordings of the models' <em>actual generated apps</em>, generated from the benchmark screenshots.
-      </p>
 
-      <h3 class="title is-4 is-spaced" style="margin:1.6rem 0 0.5rem;">The gap — visual fidelity ≠ interaction
+      <h3 class="title is-4 is-spaced" style="margin:1.4rem 0 0.5rem;">The gap — visual fidelity ≠ interaction
         inference</h3>
-      <p class="subtitle is-6" style="color:#6b7280; max-width:860px; margin-bottom:0.8rem;">
-        Two apps, three models each, sorted into three tiers: <strong>fully wired</strong>, <strong>partially
-        wired</strong>, and <strong>frozen</strong>.
+      <p class="subtitle is-6" style="color:#6b7280; max-width:880px; margin-bottom:0.8rem;">
+        Live recordings of the models' <em>actual generated apps</em>. Two apps, three models each, sorted into three
+        tiers: <strong>fully wired</strong>, <strong>partially wired</strong>, and <strong>frozen</strong>.
       </p>
       <h4 class="title is-5" style="margin:0.4rem 0 0.7rem; color:#3a3d44;">SHOP.CO storefront — filters &amp; cart</h4>
       <div class="gallery-grid-3">
@@ -472,18 +470,6 @@
 }</pre>
     </div>
   </section>
-
-  <!-- ============================ FOOTER ============================ -->
-  <footer class="footer">
-    <div class="container is-max-desktop has-text-centered">
-      <p style="font-family:'JetBrains Mono',monospace; font-weight:700; color:#4a5bb0;">UI2App</p>
-      <p class="is-size-7" style="color:#9aa0a8;">A benchmark for interaction inference from image-only, multi-page
-        screenshots.</p>
-      <p class="is-size-7" style="color:#b7bcc4;">
-        Preprint · 2026 · Page template adapted from <a href="https://nerfies.github.io/">Nerfies</a> (CC BY-SA 4.0).
-      </p>
-    </div>
-  </footer>
 
   <!-- ============================ SCRIPTS ============================ -->
   <script src="static/js/index.js"></script>
