@@ -131,13 +131,11 @@ table.leaderboard tbody td.td-model { text-align: left; font-family: 'Noto Sans'
 table.leaderboard tbody td.td-model .org { color: #9aa0a8; font-weight: 400; font-size: 0.8rem; margin-left: 0.4rem; }
 table.leaderboard tbody tr.top td { background: #fbfcff; }
 td.cell-best  { background: #e6efe7 !important; color: #2f5d2a; font-weight: 700; }
-td.cell-worst { background: #f4e7e5 !important; color: #9a3d2f; }
 td.cell-iis { font-weight: 700; color: #2c3e86; }
 .lb-note { font-size: 0.82rem; color: #9aa0a8; margin-top: 0.6rem; }
 .lb-legend { font-size: 0.85rem; color: #6b7280; margin-top: 0.4rem; }
 .lb-legend .pill { padding: 0 0.4rem; border-radius: 5px; font-weight: 600; }
 .lb-legend .pill.best { background: #e6efe7; color: #2f5d2a; }
-.lb-legend .pill.worst { background: #f4e7e5; color: #9a3d2f; }
 
 /* ---- IIS heatmap deep dive ---- */
 .heatmap-callout {

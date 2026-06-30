@@ -114,7 +114,6 @@
         var cls = '';
         if (k === 'iis') cls += ' cell-iis';
         if (v === ext[k].max) cls += ' cell-best';
-        else if (v === ext[k].min) cls += ' cell-worst';
         td.className = cls.trim();
         td.textContent = v.toFixed(1);
         tr.appendChild(td);
