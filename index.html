@@ -51,17 +51,20 @@
               Application Generation</h2>
 
             <div class="is-size-5 publication-authors" style="margin-top:1.1rem;">
-              <span class="author-block">Grace Man Chen,</span>
-              <span class="author-block">Litao Guo,</span>
-              <span class="author-block">Yifan Wu,</span>
-              <span class="author-block">Yiyu Chen,</span>
-              <span class="author-block">Yenchi Tseng,</span>
-              <span class="author-block">Sicheng Liu,</span>
-              <span class="author-block">Yuyu Luo<sup>†</sup>,</span>
-              <span class="author-block">Ying-Cong Chen<sup>†</sup></span>
+              <span class="author-block">Grace Man Chen<sup>1</sup>,</span>
+              <span class="author-block">Litao Guo<sup>1</sup>,</span>
+              <span class="author-block">Yifan Wu<sup>1</sup>,</span>
+              <span class="author-block">Yiyu Chen<sup>1</sup>,</span>
+              <span class="author-block">Yenchi Tseng<sup>1</sup>,</span>
+              <span class="author-block">Sicheng Liu<sup>1</sup>,</span>
+              <span class="author-block">Yuyu Luo<sup>1,2,†</sup>,</span>
+              <span class="author-block">Ying-Cong Chen<sup>1,2,†</sup></span>
             </div>
             <div class="is-size-6 publication-authors" style="margin-top:0.4rem; color:#6b7280;">
-              <span class="author-block">The Hong Kong University of Science and Technology (Guangzhou)</span>
+              <sup>1</sup>The Hong Kong University of Science and Technology (Guangzhou)
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top:0.15rem; color:#6b7280;">
+              <sup>2</sup>The Hong Kong University of Science and Technology
             </div>
             <div class="eql-cntrb" style="margin-top:0.3rem;"><sup>†</sup>Corresponding author</div>
 
@@ -102,21 +105,23 @@
           <div class="content has-text-justified">
             <p>
               Large language models (LLMs) are increasingly capable of generating web pages, but text-driven methods
-              require complex prompts and provide limited control over layout and cross-page consistency. Image-driven
-              approaches better reflect real workflows by using UI screenshots, yet existing benchmarks emphasize
-              <em>visual fidelity</em> and largely ignore <em>interaction quality</em>. We present
-              <strong>UI2App</strong>,
-              a benchmark for evaluating <strong>interaction inference</strong>: recovering application behavior from
-              screenshots without textual or behavioral guidance. UI2App contains <strong>327 state-coherent
-                screenshots</strong> covering <strong>45</strong> runnable multi-route web applications. We introduce an
-              end-to-end evaluation pipeline covering <strong>executability</strong>, <strong>navigation
-                reachability</strong>, <strong>visual fidelity</strong>, and <strong>interaction inference</strong>. The
-              interaction metric (<strong>IIS</strong>) measures functional correctness and state-management complexity
-              while rewarding any valid implementation. Experiments on six frontier vision-language models reveal a
-              major
-              gap between visual reconstruction and interaction realization: the visual-fidelity leader scores only
-              <strong>7.5</strong> on IIS, ranking <strong>fourth</strong> and trailing the IIS leader by
-              <strong>5.2×</strong>. Cross-page state handling remains a major bottleneck.
+              require complex prompts and provide limited control over layout and cross-page visual coherence.
+              Image-driven approaches better reflect real workflows by using UI screenshots, yet existing benchmarks
+              either stop at <em>visual fidelity</em> or evaluate interaction only when the target behavior is
+              specified through text or demonstrations. We present
+              <strong>UI2App</strong>, the first benchmark for evaluating <strong>interaction inference</strong>:
+              recovering application behavior from screenshots without textual or behavioral guidance. UI2App comprises
+              <strong>327</strong> screenshots grouped into <strong>45</strong> state-coherent screenshot sets for
+              runnable multi-route web application. We introduce an end-to-end evaluation pipeline covering
+              <strong>executability</strong>, <strong>navigation reachability</strong>, <strong>visual
+                fidelity</strong>,
+              and <strong>interaction inference</strong>. The interaction metric (<strong>IIS</strong>) measures
+              functional correctness and state-management complexity while rewarding any valid implementation.
+              Experiments on six frontier vision-language models reveal a major gap between visual reconstruction and
+              interaction realization: the visual-fidelity leader scores only <strong>7.5</strong> on IIS, ranking
+              <strong>fourth</strong> and trailing the IIS leader by <strong>5.2×</strong>. Cross-page state handling
+              remains a major bottleneck. Overall, the results indicate that inferring complete interaction
+              behavior from static screenshots remains a key challenge for models.
             </p>
           </div>
         </div>
@@ -261,13 +266,13 @@
   <!-- ============================ DATASET ============================ -->
   <section class="section" id="dataset" style="background:#fbfbfc;">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Curated for interaction difficulty</h2>
+      <h2 class="title is-3">Real apps, real screenshots</h2>
       <p class="subtitle is-6" style="color:#6b7280; max-width:860px;">
-        From <strong>2,013</strong> candidate repositories, automated filtering and a three-level expert review yield
-        <strong>45</strong> runnable applications (layout diversity, interaction richness, multi-route complexity) and
-        <strong>327</strong> state-coherent screenshots across four categories. We organize all applications into four
-        categories—Content, Admin, Transaction, and Specialty—to support systematic evaluation of different types of web
-        apps.
+        Automated filtering cuts <strong>2,013</strong> candidate GitHub repositories to <strong>164</strong>, and a
+        <strong>three-level expert review</strong> yields <strong>327</strong> screenshots in <strong>45</strong>
+        state-coherent sets. We select for evidence over scale: every set captures one runnable, multi-route
+        application with enough visual signal to <em>infer</em> its interactions, and the collection spans four
+        functional families and many design systems so scores reflect capability, not memorized templates.
       </p>
       <div class="metric-grid">
         <div class="metric-card">
