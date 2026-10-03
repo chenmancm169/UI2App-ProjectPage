@@ -3,55 +3,52 @@
 (function () {
   "use strict";
 
-  // ---------- leaderboard data: per-category cuts ----------
-  // fields: model, org, exec1, exec3, nrs, size, text, pos, color, vfs, iis
+  // Main results: tables/table_main_results.tex; all application categories.
   var DATA = {
-    Overall: [
-      ['Claude Sonnet 4.6','Anthropic',95.6,100.0,87.3,72.0,85.3,76.8,68.5,75.7,39.3],
-      ['Gemini 3.1 Pro Preview','Google',88.9,100.0,78.2,73.0,88.8,80.3,70.5,78.1,7.5],
-      ['Kimi K2.5 Thinking','Moonshot',86.7,86.7,64.6,61.4,73.8,66.3,59.5,65.3,20.7],
-      ['GPT-5.4','OpenAI',64.4,82.2,66.6,57.9,72.0,66.4,63.5,65.0,6.7],
-      ['Qwen3.5-397B-A17B','Qwen',66.7,77.8,55.7,51.8,63.3,56.6,52.4,56.0,13.2],
-      ['GLM-4.6V','Z.ai',33.3,35.6,22.3,20.4,25.8,21.7,22.6,22.6,4.5]
+    "Content": [
+      {"model": "Claude Sonnet 4.6", "org": "Anthropic", "exec1": 100.0, "exec3": 100.0, "delta": 0.0, "size": 64.9, "text": 78.7, "pos": 75.9, "color": 66.6, "vfs": 71.6, "iis": 57.3},
+      {"model": "Gemini 3.1 Pro Preview", "org": "Google", "exec1": 100.0, "exec3": 100.0, "delta": 0.0, "size": 71.1, "text": 82.2, "pos": 79.8, "color": 69.8, "vfs": 75.7, "iis": 13.7},
+      {"model": "Kimi K2.5", "org": "Moonshot", "exec1": 82.6, "exec3": 87.0, "delta": 4.3, "size": 57.4, "text": 70.1, "pos": 66.1, "color": 62.9, "vfs": 64.1, "iis": 37.2},
+      {"model": "GPT-5.4", "org": "OpenAI", "exec1": 69.6, "exec3": 78.3, "delta": 8.7, "size": 49.2, "text": 59.0, "pos": 58.3, "color": 52.9, "vfs": 54.9, "iis": 16.3},
+      {"model": "Qwen3.5-397B-A17B", "org": "Qwen", "exec1": 60.9, "exec3": 78.3, "delta": 17.4, "size": 47.4, "text": 57.7, "pos": 55.5, "color": 53.9, "vfs": 53.6, "iis": 29.4},
+      {"model": "GLM-4.6V", "org": "Z.ai", "exec1": 43.5, "exec3": 69.6, "delta": 26.1, "size": 43.8, "text": 52.1, "pos": 46.1, "color": 47.8, "vfs": 47.4, "iis": 2.6}
     ],
-    Content: [
-      ['Claude Sonnet 4.6','Anthropic',100.0,100.0,95.4,67.6,85.2,76.3,68.8,74.5,46.4],
-      ['Gemini 3.1 Pro Preview','Google',100.0,100.0,91.0,71.6,88.4,80.1,71.6,77.9,7.6],
-      ['Kimi K2.5 Thinking','Moonshot',100.0,100.0,88.6,68.2,84.7,75.8,73.4,75.6,22.7],
-      ['GPT-5.4','OpenAI',62.5,75.0,68.5,50.7,64.5,60.4,56.6,58.0,8.0],
-      ['Qwen3.5-397B-A17B','Qwen',75.0,81.2,69.8,43.7,60.7,52.5,51.6,52.1,26.1],
-      ['GLM-4.6V','Z.ai',56.2,56.2,47.0,34.8,45.1,38.0,38.6,39.1,6.2]
+    "Commerce": [
+      {"model": "Claude Sonnet 4.6", "org": "Anthropic", "exec1": 95.8, "exec3": 100.0, "delta": 4.2, "size": 69.1, "text": 75.0, "pos": 74.6, "color": 68.8, "vfs": 71.9, "iis": 36.7},
+      {"model": "Gemini 3.1 Pro Preview", "org": "Google", "exec1": 95.8, "exec3": 100.0, "delta": 4.2, "size": 68.9, "text": 75.1, "pos": 73.7, "color": 71.2, "vfs": 72.2, "iis": 10.2},
+      {"model": "Kimi K2.5", "org": "Moonshot", "exec1": 87.5, "exec3": 87.5, "delta": 0.0, "size": 61.8, "text": 67.3, "pos": 65.4, "color": 65.0, "vfs": 64.8, "iis": 12.5},
+      {"model": "GPT-5.4", "org": "OpenAI", "exec1": 83.3, "exec3": 91.7, "delta": 8.3, "size": 59.8, "text": 67.5, "pos": 66.5, "color": 65.7, "vfs": 64.9, "iis": 7.8},
+      {"model": "Qwen3.5-397B-A17B", "org": "Qwen", "exec1": 83.3, "exec3": 87.5, "delta": 4.2, "size": 58.5, "text": 63.7, "pos": 62.7, "color": 60.6, "vfs": 61.4, "iis": 15.0},
+      {"model": "GLM-4.6V", "org": "Z.ai", "exec1": 20.8, "exec3": 62.5, "delta": 41.7, "size": 39.9, "text": 40.0, "pos": 40.6, "color": 38.3, "vfs": 39.7, "iis": 10.3}
     ],
-    Admin: [
-      ['Claude Sonnet 4.6','Anthropic',93.8,100.0,94.2,76.1,85.1,80.2,63.5,76.2,25.0],
-      ['Gemini 3.1 Pro Preview','Google',81.2,100.0,72.9,74.7,88.5,81.9,61.3,76.6,7.4],
-      ['Kimi K2.5 Thinking','Moonshot',68.8,68.8,52.9,52.8,59.9,56.8,37.8,51.8,13.9],
-      ['GPT-5.4','OpenAI',50.0,75.0,59.8,54.5,64.1,61.0,54.0,58.4,2.0],
-      ['Qwen3.5-397B-A17B','Qwen',50.0,62.5,43.0,50.5,55.3,51.6,41.5,49.7,4.2],
-      ['GLM-4.6V','Z.ai',25.0,25.0,11.5,12.3,14.5,12.7,13.0,13.1,4.0]
+    "Admin": [
+      {"model": "Claude Sonnet 4.6", "org": "Anthropic", "exec1": 90.0, "exec3": 100.0, "delta": 10.0, "size": 68.4, "text": 77.1, "pos": 78.1, "color": 62.1, "vfs": 71.4, "iis": 21.3},
+      {"model": "Gemini 3.1 Pro Preview", "org": "Google", "exec1": 86.7, "exec3": 96.7, "delta": 10.0, "size": 71.0, "text": 78.8, "pos": 78.5, "color": 63.8, "vfs": 73.0, "iis": 4.9},
+      {"model": "Kimi K2.5", "org": "Moonshot", "exec1": 60.0, "exec3": 66.7, "delta": 6.7, "size": 43.9, "text": 49.1, "pos": 49.9, "color": 39.5, "vfs": 45.6, "iis": 13.9},
+      {"model": "GPT-5.4", "org": "OpenAI", "exec1": 56.7, "exec3": 73.3, "delta": 16.7, "size": 47.7, "text": 54.5, "pos": 54.7, "color": 45.5, "vfs": 50.6, "iis": 1.1},
+      {"model": "Qwen3.5-397B-A17B", "org": "Qwen", "exec1": 70.0, "exec3": 76.7, "delta": 6.7, "size": 54.6, "text": 59.5, "pos": 59.0, "color": 49.6, "vfs": 55.7, "iis": 6.9},
+      {"model": "GLM-4.6V", "org": "Z.ai", "exec1": 20.0, "exec3": 46.7, "delta": 26.7, "size": 25.9, "text": 29.4, "pos": 29.2, "color": 25.7, "vfs": 27.6, "iis": 3.5}
     ],
-    Transaction: [
-      ['Claude Sonnet 4.6','Anthropic',83.3,100.0,69.7,76.5,85.6,68.5,79.2,77.5,51.8],
-      ['Gemini 3.1 Pro Preview','Google',83.3,100.0,68.0,77.6,90.4,72.1,87.4,81.9,11.6],
-      ['Kimi K2.5 Thinking','Moonshot',100.0,100.0,59.3,73.3,85.8,68.1,82.7,77.5,30.7],
-      ['GPT-5.4','OpenAI',100.0,100.0,58.3,69.3,89.2,71.9,87.2,79.4,13.5],
-      ['Qwen3.5-397B-A17B','Qwen',66.7,83.3,38.3,60.6,69.3,58.4,65.6,63.5,11.0],
-      ['GLM-4.6V','Z.ai',33.3,33.3,9.4,24.6,30.5,24.0,27.6,26.7,0.5]
+    "Specialty": [
+      {"model": "Claude Sonnet 4.6", "org": "Anthropic", "exec1": 100.0, "exec3": 100.0, "delta": 0.0, "size": 71.4, "text": 79.5, "pos": 74.7, "color": 55.3, "vfs": 70.3, "iis": 36.7},
+      {"model": "Gemini 3.1 Pro Preview", "org": "Google", "exec1": 72.2, "exec3": 94.4, "delta": 22.2, "size": 65.6, "text": 81.8, "pos": 80.1, "color": 59.1, "vfs": 71.7, "iis": 3.7},
+      {"model": "Kimi K2.5", "org": "Moonshot", "exec1": 66.7, "exec3": 66.7, "delta": 0.0, "size": 47.4, "text": 56.5, "pos": 53.1, "color": 37.4, "vfs": 48.6, "iis": 16.5},
+      {"model": "GPT-5.4", "org": "OpenAI", "exec1": 66.7, "exec3": 94.4, "delta": 27.8, "size": 66.3, "text": 77.1, "pos": 74.6, "color": 59.6, "vfs": 69.4, "iis": 3.5},
+      {"model": "Qwen3.5-397B-A17B", "org": "Qwen", "exec1": 72.2, "exec3": 88.9, "delta": 16.7, "size": 64.2, "text": 72.4, "pos": 69.6, "color": 56.5, "vfs": 65.7, "iis": 11.9},
+      {"model": "GLM-4.6V", "org": "Z.ai", "exec1": 11.1, "exec3": 27.8, "delta": 16.7, "size": 13.5, "text": 17.0, "pos": 16.8, "color": 15.0, "vfs": 15.6, "iis": 1.4}
     ],
-    Specialty: [
-      ['Claude Sonnet 4.6','Anthropic',100.0,100.0,67.8,69.0,85.8,77.8,70.1,75.7,45.1],
-      ['Gemini 3.1 Pro Preview','Google',85.7,100.0,69.5,68.2,88.9,84.2,74.8,79.0,4.1],
-      ['Kimi K2.5 Thinking','Moonshot',85.7,85.7,41.4,54.8,70.5,65.0,57.3,61.9,23.3],
-      ['GPT-5.4','OpenAI',71.4,100.0,85.1,72.8,92.3,87.4,81.0,83.4,8.6],
-      ['Qwen3.5-397B-A17B','Qwen',85.7,100.0,67.3,65.9,82.2,75.9,67.6,72.9,5.9],
-      ['GLM-4.6V','Z.ai',0.0,14.3,1.4,2.7,3.6,2.6,3.9,3.2,4.8]
+    "Overall": [
+      {"model": "Claude Sonnet 4.6", "org": "Anthropic", "exec1": 95.8, "exec3": 100.0, "delta": 4.2, "size": 68.3, "text": 77.4, "pos": 76.1, "color": 63.6, "vfs": 71.3, "iis": 36.8},
+      {"model": "Gemini 3.1 Pro Preview", "org": "Google", "exec1": 89.5, "exec3": 97.9, "delta": 8.4, "size": 69.5, "text": 79.3, "pos": 77.9, "color": 66.3, "vfs": 73.2, "iis": 8.1},
+      {"model": "Kimi K2.5", "org": "Moonshot", "exec1": 73.7, "exec3": 76.8, "delta": 3.2, "size": 52.3, "text": 60.2, "pos": 58.3, "color": 51.2, "vfs": 55.5, "iis": 19.7},
+      {"model": "GPT-5.4", "org": "OpenAI", "exec1": 68.4, "exec3": 83.2, "delta": 14.7, "size": 54.7, "text": 63.2, "pos": 62.3, "color": 55.1, "vfs": 58.8, "iis": 6.9},
+      {"model": "Qwen3.5-397B-A17B", "org": "Qwen", "exec1": 71.6, "exec3": 82.1, "delta": 10.5, "size": 55.7, "text": 62.6, "pos": 61.1, "color": 54.7, "vfs": 58.5, "iis": 15.3},
+      {"model": "GLM-4.6V", "org": "Z.ai", "exec1": 24.2, "exec3": 52.6, "delta": 28.4, "size": 31.4, "text": 35.2, "pos": 33.8, "color": 32.2, "vfs": 33.2, "iis": 4.6}
     ]
   };
-  var KEYS = ['model','org','exec1','exec3','nrs','size','text','pos','color','vfs','iis'];
-  function toObj(row) { var o = {}; KEYS.forEach(function (k, i) { o[k] = row[i]; }); return o; }
 
-  var COLS_SHORT = [['exec1','EXEC@1'],['exec3','EXEC@3'],['nrs','NRS'],['vfs','VFS'],['iis','IIS']];
-  var COLS_FULL  = [['exec1','EXEC@1'],['exec3','EXEC@3'],['nrs','NRS'],['size','Size'],['text','Text'],['pos','Pos'],['color','Color'],['vfs','VFS'],['iis','IIS']];
+  var COLS_SHORT = [['exec1','EXEC@1'],['exec3','EXEC@3'],['vfs','VFS'],['iis','IIS']];
+  var COLS_FULL  = [['exec1','EXEC@1'],['exec3','EXEC@3'],['size','Size'],['text','Text'],['pos','Pos'],['color','Color'],['vfs','VFS'],['iis','IIS']];
 
   var state = { cat: 'Overall', sortKey: 'iis', sortDir: 'desc', breakdown: false };
 
@@ -61,7 +58,7 @@
   function cols() { return state.breakdown ? COLS_FULL : COLS_SHORT; }
 
   function render() {
-    var rows = DATA[state.cat].map(toObj);
+    var rows = DATA[state.cat].slice();
     var defs = cols();
 
     // per-column extremes (for best/worst shading)

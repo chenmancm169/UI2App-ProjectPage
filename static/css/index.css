@@ -55,6 +55,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 0.9rem;
 }
+#metrics .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .metric-card {
   border: 1px solid #e6e7ea;
   border-radius: 13px;
@@ -179,5 +180,5 @@ table.matrix tr.ours td { background: #f7f9ff; font-weight: 700; }
 
 /* ---- responsive ---- */
 @media screen and (max-width: 768px) {
-  .metric-grid, .tax-strip, .dataset-grid, .gallery-grid, .gallery-grid-3 { grid-template-columns: 1fr; }
+  #metrics .metric-grid, .metric-grid, .tax-strip, .dataset-grid, .gallery-grid, .gallery-grid-3 { grid-template-columns: 1fr; }
 }
