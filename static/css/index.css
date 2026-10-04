@@ -162,10 +162,13 @@ td.cell-iis { font-weight: 700; color: #2c3e86; }
 
 /* ---- positioning matrix ---- */
 .matrix-wrap { overflow-x: auto; border: 1px solid #e6e7ea; border-radius: 12px; }
-table.matrix { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
-table.matrix th, table.matrix td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f1f1f3; text-align: center; }
+table.matrix { width: 100%; border-collapse: collapse; font-size: 0.9rem; table-layout: fixed; }
+table.matrix th, table.matrix td { padding: 0.6rem clamp(0.15rem, 0.7vw, 0.6rem); overflow-wrap: anywhere; border-bottom: 1px solid #f1f1f3; text-align: center; }
 table.matrix thead th { background: #fafafa; font-size: 0.8rem; color: #5b6068; border-bottom: 2px solid #e6e7ea; }
-table.matrix td.lbl, table.matrix th.lbl { text-align: left; white-space: nowrap; }
+table.matrix td.lbl, table.matrix th.lbl { text-align: left; white-space: normal; }
+table.matrix thead th:nth-child(1) { width: 18%; }
+table.matrix thead th:nth-child(3) { width: 16%; }
+table.matrix thead th:nth-child(8) { width: 15%; }
 table.matrix .matrix-group th { text-align: left; background: #f3f4f6; border-top: 1px solid #d9dce2; color: #3a3d44; font-weight: 700; }
 table.matrix tr.ours td { background: #f7f9ff; font-weight: 700; }
 .ck { color: #2e8b57; font-weight: 700; }
