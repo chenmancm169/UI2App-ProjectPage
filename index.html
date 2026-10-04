@@ -127,8 +127,8 @@
               leader scores only <strong>8.1</strong> on IIS, ranking fourth, while the IIS leader achieves
               <strong>4.5×</strong> that score. High-complexity interactions such as cross-route state
               persistence remain a major bottleneck, with five of the six models scoring at most 3.5 on this
-              dimension. These findings highlight the need to assess screenshot-implied interactions alongside
-              visual fidelity.
+              dimension. Overall, these results highlight interaction inference as a key challenge in generating
+              functional web applications from static screenshots.
             </p>
           </div>
         </div>
@@ -324,8 +324,10 @@
         </div>
         <div class="metric-card is-ours">
           <div><span class="m-name">IIS</span><span class="m-tag">interaction inference · ours</span></div>
-          <p><em>Does the behavior work?</em> A rubric credits <strong>any valid implementation</strong> of each
-            interaction the screenshots imply, weighted by state complexity (S1 UI-state → S2 data-state → S3 cross-route persistence).</p>
+          <p><em>Does the behavior work?</em> Seven interaction categories are assessed by coverage, implementation
+            result, and state-management scope (S1 UI-state → S2 data-state → S3 cross-route persistence).
+            Rubrics allow <strong>alternative implementations consistent with the visual evidence</strong>.
+            A category is fully functional only when all sub-functions required by its rubric work correctly.</p>
         </div>
       </div>
     </div>
