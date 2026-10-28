@@ -200,3 +200,54 @@ table.matrix tr.ours td { background: #f7f9ff; font-weight: 700; }
 @media screen and (max-width: 768px) {
   #metrics .metric-grid, .metric-grid, .tax-strip, .dataset-grid, .gallery-grid, .gallery-grid-3 { grid-template-columns: 1fr; }
 }
+
+/* Soft resource buttons with colored icons. */
+.publication-links .external-link.button {
+  background: #f7f8fc;
+  border: 1px solid #dfe4ee;
+  color: #424b60;
+  box-shadow: 0 1px 2px rgba(30, 45, 75, .03);
+  transition: background .15s, border-color .15s;
+}
+.publication-links .external-link.button:hover {
+  background: #eef2fa;
+  border-color: #bbc8df;
+  color: #263650;
+}
+.publication-links .external-link.button:focus-visible {
+  outline: 3px solid #9bb6e7;
+  outline-offset: 3px;
+}
+.publication-links .fa-file-pdf { color: #d05a64; }
+.publication-links .fa-github { color: #8063bf; }
+.publication-links .fa-database { color: #269a97; }
+.publication-links .fa-envelope { color: #4c85cc; }
+
+.contact-footer { text-align: center; padding: .5rem 1.5rem 2.5rem; }
+.contact-footer a { color: #6b7280; font-size: .9rem; }
+.contact-footer a span { color: #4c85cc; margin-right: .25rem; }
+.contact-footer a:hover { color: #365f99; text-decoration: underline; }
+.contact-footer a:focus-visible { outline: 2px solid #9bb6e7; outline-offset: 5px; }
+
+/* Citation and contact share the restrained resource-button palette. */
+#bibtex { padding-bottom: 1.5rem; }
+#bibtex .bibtex-head { margin-bottom: 1rem; }
+#bibtex pre {
+  background: #f6f8fc; color: #46536b;
+  border: 1px solid #e0e6ef; border-radius: 12px;
+  padding: 1.4rem 1.5rem; line-height: 1.85;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: .8rem; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.citation-copy {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .5rem .8rem; border: 1px solid #dfe4ee; border-radius: 8px;
+  background: #fff; color: #56657e; font: inherit; font-size: .78rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.citation-copy:hover { background: #eef2fa; border-color: #bbc8df; }
+.citation-copy:focus-visible { outline: 2px solid #9bb6e7; outline-offset: 3px; }
+.contact-footer { max-width: 960px; margin: 0 auto; padding: 1.1rem 1.5rem 2rem; text-align: center; }
+.contact-footer::before { content: ''; display: block; width: 48px; height: 1px; background: #dfe4ee; margin: 0 auto 1.1rem; }
+.contact-footer a { display: inline-flex; align-items: center; gap: .45rem; color: #78849a; font-size: .8rem; }
+.contact-footer a svg { color: #788eaf; }

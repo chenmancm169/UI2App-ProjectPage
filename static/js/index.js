@@ -143,11 +143,16 @@
 
   // bibtex copy
   var cp = document.getElementById('btnCopyBib');
-  if (cp) cp.addEventListener('click', function () {
+  if (cp) cp.addEventListener('click', async function () {
+    var label = cp.querySelector('span');
     var txt = document.getElementById('bibtexBlock').textContent;
-    try { if (navigator.clipboard) navigator.clipboard.writeText(txt); } catch (e) {}
-    cp.textContent = 'Copied ✓';
-    setTimeout(function () { cp.textContent = 'Copy'; }, 1500);
+    try {
+      await navigator.clipboard.writeText(txt);
+      label.textContent = 'Copied';
+    } catch (e) {
+      label.textContent = 'Select text to copy';
+    }
+    setTimeout(function () { label.textContent = 'Copy citation'; }, 2000);
   });
 
   render();

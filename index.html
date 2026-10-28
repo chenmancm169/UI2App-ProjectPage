@@ -90,9 +90,9 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="mailto:mchen650@connect.hkust-gz.edu.cn"
+                  <a href="https://huggingface.co/papers/2607.06306" target="_blank" rel="noopener noreferrer"
                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-envelope"></i></span><span>Email</span>
+                    <span class="icon" aria-hidden="true">🤗</span><span>HF Paper</span>
                   </a>
                 </span>
               </div>
@@ -494,7 +494,10 @@
     <div class="container is-max-desktop">
       <div class="bibtex-head">
         <h2 class="title is-3" style="margin:0;">BibTeX</h2>
-        <button class="button is-small is-dark" id="btnCopyBib">Copy</button>
+        <button class="citation-copy" id="btnCopyBib" type="button" aria-label="Copy BibTeX citation">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+          <span aria-live="polite">Copy citation</span>
+        </button>
       </div>
       <pre id="bibtexBlock">@article{ui2app2026,
   title   = {UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation},
@@ -504,6 +507,12 @@
 }</pre>
     </div>
   </section>
+
+  <footer class="contact-footer">
+    <a href="mailto:mchen650@connect.hkust-gz.edu.cn" aria-label="Contact the UI2App authors by email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg> Contact
+    </a>
+  </footer>
 
   <!-- ============================ SCRIPTS ============================ -->
   <script src="static/js/index.js"></script>
